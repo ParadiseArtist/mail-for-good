@@ -5,10 +5,11 @@ First, keep in mind that this application uses [Amazon SES](https://aws.amazon.c
 Before installing this application, you'll need some API keys from Google to handle authentication. This can be done in a few steps:
 
 1. Login to [Google API Manager](https://console.developers.google.com/apis/).
-2. In the left menu, select **Dashboard**. Now select **Enable API**, search for `Google+` and select it. At the top of the screen, ensure it's enabled by clicking on **Enable**.
-3. In the left menu, select **Credentials**. Then click **Create Credentials** > **OAuth client ID**.
-4. Select **Web Application**. Name is as you wish, but under **Authorised Javascript Origins** put `http://localhost:8080`, and under **Authorised redirect URIs** put `http://localhost:8080/auth/google/callback`.
-5. Click **Create**. You will now have a Client ID and Client Secret. In your .env file, put the Client ID as your GOOGLE_CONSUMER_KEY, and the Client Secret as your GOOGLE_CONSUMER_SECRET.
+2. Choose **Select a project** on the top left dropdown. Click on the **+** to create a new project, `mail-for-good` or (select it you have created it before). 
+3. In the left menu, select **Dashboard**. Now select **Enable API**, search for `Google+` and select it. At the top of the screen, ensure it's enabled by clicking on **Enable**.
+4. In the left menu, select **Credentials**. Then click **Create Credentials** > **OAuth client ID**.
+5. Select **Web Application**. Name is as you wish, but under **Authorised Javascript Origins** put `http://localhost`, and under **Authorised redirect URIs** put `http://localhost/auth/google/callback`.
+6. Click **Create**. You will now have a Client ID and Client Secret. In your .env file, put the Client ID as your GOOGLE_CONSUMER_KEY, and the Client Secret as your GOOGLE_CONSUMER_SECRET.
 
 ###### Installing with Docker
 
@@ -20,14 +21,14 @@ Edit the `.env.example` file in your root directory.
 
 After this, you'll need to create your own .env file. Check out the .env.example file in this repo. From the terminal, you can run `cp .env.example .env` then edit the .env file with any editor of your choice. There are instruction in this file that you can follow.
 
-Now run `docker-compose up`. This will run all the containers needed to launch this app, and will take some time to finish.
+Now run `sudo docker-compose up`. This will run all the containers needed to launch this app, and will take some time to finish.
 
-When the process is finished, the app will be exposed on port 8080 and accessible by visiting `http://[hostname]:8080`. You may use a reverse proxy such as Nginx to serve the app on port 80.
+When the process is finished, the app will be exposed on port 80 and accessible by visiting `http://[hostname]`.
 
 ###### Installation summary
 
 1. Install and run the Docker daemon.
 2. Clone the repository and change into it `git clone https://github.com/freeCodeCamp/Mail-for-Good && cd Mail-for-Good`.
 3. Run `cp .env.example .env` then open `.env` and edit it, passing in your own values.
-4. Run `docker-compose up`. Wait for it to finish.
-5. Visit `http://[hostname]:8080` or `localhost:8080` if running locally.
+4. Run `sudo docker-compose up`. Wait for it to finish.
+5. Visit `http://[hostname]:8080` or `localhost` if running locally.
